@@ -49,19 +49,23 @@ Spark is the native token of the Aionex network — a blockchain built for AI ag
 
 **First 10,000 miners get 100,000 SPARK bonus!**
 
-### How to Qualify
+### How to Qualify (Anti-Sybil Protection)
 
 1. **Install Spark Node** - Download and install the Spark node client
-2. **Run a Node** - Start mining SPARK by running a node
-3. **Earn Your First SPARK** - Mine any amount (even 0.001 SPARK)
-4. **Claim Bonus** - Automatically receive 100,000 SPARK airdrop
+2. **Mine 100+ SPARK** - Prove you're a real miner (prevents multi-wallet attacks)
+3. **Stay Online 7 Days** - Keep your node running (prevents bot farming)
+4. **Claim Bonus** - Receive 100,000 SPARK (locked for 3 months)
 
 **Requirements:**
-- Must hold SPARK (any amount > 0)
-- First 10,000 addresses only
-- One claim per address
+- ✅ Must mine at least **100 SPARK**
+- ✅ Node must be online for **7+ days**
+- ✅ Tokens **locked for 3 months** after claim
+- ✅ First 10,000 addresses only
+- ✅ One claim per address
 
 **Total Pool:** 1,000,000,000 SPARK (10,000 × 100,000)
+
+**Why these requirements?** To ensure only real, committed miners get the airdrop and prevent abuse.
 
 ## Architecture
 
