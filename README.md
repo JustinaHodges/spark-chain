@@ -34,16 +34,18 @@ Spark is the native token of the Aionex network — a blockchain built for AI ag
 
 | Allocation | Percentage | Amount | Purpose |
 |---|---|---|---|
-| Community Rewards | 40% | 400B SPARK | Node operators, early adopters, ecosystem contributors |
-| Ecosystem Fund | 30% | 300B SPARK | Development grants, partnerships, liquidity provision |
-| Team & Advisors | 20% | 200B SPARK | Core team, advisors (4-year vesting) |
-| Early Investors | 10% | 100B SPARK | Seed/strategic investors (2-year vesting) |
+| Community Rewards | 50% | 500B SPARK | Mining, airdrops, staking rewards |
+| Ecosystem Fund | 30% | 300B SPARK | Development grants, partnerships, liquidity |
+| Team | 20% | 200B SPARK | Founder (4-year vesting with 1-year cliff) |
+
+**No pre-sale, no private sale, no VC allocation. 100% fair launch.**
 
 **Vesting Schedule:**
-- Community Rewards: Released through mining/staking over 10 years
+- Community Rewards: Released through mining (15 years), airdrops, and staking
 - Ecosystem Fund: Controlled by DAO governance
-- Team & Advisors: 1-year cliff, then linear vesting over 4 years
-- Early Investors: 6-month cliff, then linear vesting over 2 years
+- Team: 1-year cliff, then linear vesting over 4 years
+
+**Want to invest? Buy on the open market after launch!**
 
 ## Early Adopter Airdrop 🎁
 

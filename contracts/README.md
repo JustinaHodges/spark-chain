@@ -125,13 +125,6 @@ console.log("在线天数:", onlineDays);
 
 ---
 
-## 3. Early Investor Vesting (早期投资者锁仓)
-
-**锁仓释放合约** - 管理早期投资者的 10% (100B SPARK) 代币
-
-（详见之前的文档）
-
----
 
 ## 部署顺序
 
@@ -150,7 +143,7 @@ await sparkToken.transfer(airdropAddress, "1000000000000000000000000000");
 
 - **NodeRegistry**: `待部署`
 - **EarlyAdopterAirdropV2**: `待部署`
-- **EarlyInvestorVesting**: `待部署`
+- **
 
 ## 安全审计
 
