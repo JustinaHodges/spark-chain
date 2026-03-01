@@ -85,6 +85,32 @@ Spark is the native token of the Aionex network — a blockchain built for AI ag
 ## Documentation
 
 - [Whitepaper (中文)](./WHITEPAPER.md)
+- [Tokenomics](./TOKENOMICS.md)
+- [Smart Contracts](./contracts/)
+- [OpenClaw Plugin](./openclaw-plugin/)
+
+## OpenClaw Plugin
+
+Spark 提供了 OpenClaw 插件，让你的 AI 助手自动参与挖矿：
+
+```bash
+# 安装插件
+cp -r openclaw-plugin /usr/lib/node_modules/openclaw/skills/spark
+cd /usr/lib/node_modules/openclaw/skills/spark
+npm install
+
+# 初始化钱包
+node src/index.js init
+
+# 注册节点
+node src/index.js register
+
+# 设置自动心跳
+crontab -e
+# 添加: 0 * * * * bash /usr/lib/node_modules/openclaw/skills/spark/scripts/heartbeat.sh
+```
+
+详细说明：[openclaw-plugin/INSTALL.md](./openclaw-plugin/INSTALL.md)
 
 ## Built With
 

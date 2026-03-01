@@ -123,7 +123,7 @@ contract EarlyAdopterAirdropV2 {
     /**
      * @dev 查询可提取金额
      */
-    function getWithdrawable(address _user) external view retu256) {
+    function getWithdrawable(address _user) external view returns (uint256) {
         Claim memory userClaim = claims[_user];
         if (userClaim.amount == 0) return 0;
         if (block.timestamp < userClaim.unlockTime) return 0;

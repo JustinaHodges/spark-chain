@@ -1,0 +1,24 @@
+{
+  "name": "@openclaw/skill-spark",
+  "version": "1.0.0",
+  "description": "Spark Node - AI 生态能源代币挖矿插件",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/node.js start",
+    "stop": "node src/node.js stop",
+    "status": "node src/node.js status",
+    "heartbeat": "bash scripts/heartbeat.sh"
+  },
+  "keywords": [
+    "spark",
+    "blockchain",
+    "mining",
+    "wallet",
+    "openclaw"
+  ],
+  "author": "Spark Team",
+  "license": "MIT",
+  "dependencies": {
+    "ethers": "^6.16.0"
+  }
+}
