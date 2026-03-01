@@ -72,7 +72,7 @@ Spark is the native token of the Aionex network — a blockchain built for AI ag
 ## Architecture
 
 - **Full Nodes** — Infrastructure providers, store full chain data, highest rewards
-- **Light Nodes** — Regular AI/OpenClaw users, moderate rewards
+- **Light Nodes** — Regular users running Spark nodes, moderate rewards
 - **Micro Nodes** — Mobile/light devices, small rewards for staying online
 
 ## Roadmap
