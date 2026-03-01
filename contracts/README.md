@@ -1,26 +1,74 @@
-# Early Investor Vesting Contract
+# Spark Chain Smart Contracts
 
-早期投资者代币锁仓合约，管理 10% (100B SPARK) 的代币分配。
+## 1. Early Adopter Airdrop (早期用户空投)
 
-## 功能特性
+**自动空投合约** - 前 10,000 个持有 SPARK 的地址，每个自动获得 100,000 SPARK
+
+### 特性
+
+- ✅ **零门槛**: 只要持有任意数量的 SPARK 就能领取
+- ✅ **自动检测**: 合约自动检测持币地址
+- ✅ **先到先得**: 前 10,000 个领取的地址获得空投
+- ✅ **一键领取**: 调用 `claim()` 即可
+- ✅ **防重复**: 每个地址只能领取一次
+
+### 使用方法
+
+#### 用户领取空投
+
+```javascript
+// 1. 检查是否符合条件
+const eligible = await airdrop.isEligible("你的地址");
+
+// 2. 查看剩余名额
+const remaining = await airdrop.getRemainingSlots();
+
+// 3. 领取空投
+await airdrop.claim();
+```
+
+#### 部署合约
+
+```javascript
+// 部署时传入 SPARK 代币地址
+const airdrop = await EarlyAdopterAirdrop.deploy(sparkTokenAddress);
+
+// 向合约转入 10 亿 SPARK (10,000 * 100,000)
+await sparkToken.transfer(airdrop.address, "1000000000000000000000000000");
+```
+
+### 工作流程
+
+1. **用户持有 SPARK** → 通过转账、挖矿等方式获得任意数量 SPARK
+2. **调用 claim()** → 合约自动检测余额 > 0
+3. **自动发放** → 立即收到 100,000 SPARK
+4. **名额满** → 前 10,000 人领完后自动结束
+
+### 示例场景
+
+```
+用户 A: 持有 1 SPARK → 调用 claim() → 获得 100,000 SPARK ✅
+用户 B: 持有 0 SPARK → 调用 claim() → 失败 ❌
+用户 C: 已领取过 → 再次调用 → 失败 ❌
+第 10,001 人 → 调用 claim() → 失败（名额已满）❌
+```
+
+---
+
+## 2. Early Investor Vesting (早期投资者锁仓)
+
+**锁仓释放合约** - 管理早期投资者的 10% (100B SPARK) 代币
+
+### 特性
 
 - ✅ 总量控制：100,000,000,000 SPARK (10%)
 - ✅ 锁仓期：6个月 cliff
 - ✅ 线性释放：2年线性解锁
 - ✅ 批量注册：支持批量添加投资者
-- ✅ 自动计算：自动计算可领取金额
-- ✅ 安全保护：防止超额分配
 
-## 使用流程
+### 使用方法
 
-### 1. 部署合约
-
-```javascript
-// 部署时传入 SPARK 代币地址
-const vesting = await EarlyInvestorVesting.deploy(sparkTokenAddress);
-```
-
-### 2. 注册投资者
+#### 注册投资者
 
 ```javascript
 // 单个注册
@@ -31,73 +79,63 @@ await vesting.registerInvestor(
 
 // 批量注册
 await vesting.registerInvestorsBatch(
-  ["0x地址1", "0x地址2", "0x地址3"],
-  [1000000000, 2000000000, 500000000]  // 单位：SPARK
+  ["0x地址1", "0x地址2"],
+  [1000000000, 2000000000]
 );
 ```
 
-### 3. 启动释放计划
+#### 启动释放
 
 ```javascript
 await vesting.startVesting();
-// 从此刻开始计时：6个月后开始释放，2年内线性解锁
+// 从此刻开始：6个月后开始释放，2年内线性解锁
 ```
 
-### 4. 投资者领取代币
+#### 投资者领取
 
 ```javascript
 // 查询可领取金额
-const claimable = await vesting.getClaimableAmount("0x投资者地址");
+const claimable = await vesting.getClaimableAmount("0x地址");
 
 // 领取
 await vesting.claim();
 ```
 
-## 时间线示例
+### 时间线
 
-假设 2026-03-01 启动释放计划：
+- **Day 0**: 启动释放计划
+- **Month 6**: 锁仓期结束，开始线性释放
+- **Year 1**: 已释放 25%
+- **Year 1.5**: 已释放 50%
+- **Year 2**: 已释放 75%
+- **Year 2.5**: 全部释放完毕 (100%)
 
-- **2026-03-01**: 启动，开始计时
-- **2026-09-01**: 6个月锁仓期结束，开始线性释放
-- **2027-03-01**: 1年，已释放 25%
-- **2027-09-01**: 1.5年，已释放 50%
-- **2028-03-01**: 2年，已释放 75%
-- **2028-09-01**: 2.5年，全部释放完毕 (100%)
-
-## 查询接口
-
-```javascript
-// 查询投资者信息
-const info = await vesting.getInvestorInfo("0x地址");
-// 返回: { allocation, claimed, claimable, registered }
-
-// 查询总分配额度
-const total = await vesting.getTotalAllocated();
-
-// 查询投资者数量
-const count = await vesting.getInvestorCount();
-```
-
-## 安全特性
-
-1. **防超额分配**: 总分配不能超过 100B SPARK
-2. **锁仓保护**: 6个月内无法领取
-3. **线性释放**: 避免砸盘风险
-4. **Owner控制**: 只有owner可以注册投资者和启动释放
-5. **紧急提取**: 支持紧急情况下的资金迁移
+---
 
 ## 部署到 Spark Chain
 
 ```bash
-# 1. 编译合约
+# 1. 安装依赖
+npm install --save-dev hardhat @nomicfoundation/hardhat-toolbox
+
+# 2. 编译合约
 npx hardhat compile
 
-# 2. 部署
-npx hardhat run scripts/deploy-vesting.js --network spark
+# 3. 部署空投合约
+npx hardhat run scripts/deploy-airdrop.js --network spark
 
-# 3. 验证合约
-npx hardhat verify --network spark <合约地址> <SPARK代币地址>
+# 4. 部署锁仓合约
+npx hardhat run scripts/deploy-vesting.js --network spark
 ```
+
+## 合约地址（待部署）
+
+- **EarlyAdopterAirdrop**: `待部署`
+- **EarlyInvestorVesting**: `待部署`
+
+## 安全审计
+
+⚠️ 合约尚未经过专业审计，请谨慎使用。
 
 ## License
 
