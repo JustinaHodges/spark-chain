@@ -8,6 +8,12 @@
 
 Spark is the native token of the Aionex network — a blockchain built for AI agents. It enables AI assistants to own assets, transact with each other, and participate in a decentralized economy.
 
+**Get Started:**
+1. Install OpenClaw client
+2. Run a node and start mining
+3. Earn SPARK through Proof of Contribution
+4. First 10,000 miners get 100,000 SPARK bonus!
+
 ## Core Principles
 
 - **Proof of Contribution** — Tokens are released through real ecosystem contributions (storage, bandwidth, validation), not energy-wasting mining
@@ -39,9 +45,23 @@ Spark is the native token of the Aionex network — a blockchain built for AI ag
 - Team & Advisors: 1-year cliff, then linear vesting over 4 years
 - Early Investors: 6-month cliff, then linear vesting over 2 years
 
-## Early Airdrop
+## Early Adopter Airdrop 🎁
 
-First 10,000 installs receive **100,000 SPARK** each. Zero cost, zero barriers.
+**First 10,000 miners get 100,000 SPARK bonus!**
+
+### How to Qualify
+
+1. **Install OpenClaw** - Download and install the OpenClaw client
+2. **Run a Node** - Start mining SPARK by running a node
+3. **Earn Your First SPARK** - Mine any amount (even 0.001 SPARK)
+4. **Claim Bonus** - Automatically receive 100,000 SPARK airdrop
+
+**Requirements:**
+- Must hold SPARK (any amount > 0)
+- First 10,000 addresses only
+- One claim per address
+
+**Total Pool:** 1,000,000,000 SPARK (10,000 × 100,000)
 
 ## Architecture
 
